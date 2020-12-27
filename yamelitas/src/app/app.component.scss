@@ -49,9 +49,17 @@
 
     }
 
-    li:hover{
+    a:active{
+        color: black;
+       
+    }
+    
+
+    a:hover{
         background-color: rgb(155, 0, 155);
 
     }
+
+    
 
 }
