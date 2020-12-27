@@ -1,0 +1,57 @@
+
+
+
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img{
+        width: 80%;
+    }
+    
+}
+
+
+
+.list-container{
+    display: flex;
+    background-color: rgb(110, 184, 0);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+    
+    li{
+        
+        flex: 1;
+        border-right: 1px groove white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    a{
+        list-style: none;
+        text-decoration: none;
+        color: white;
+        width: auto;
+        font-size: 1.4em;
+        font-weight: 400;
+        flex: 1;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        
+
+
+    }
+
+    li:hover{
+        background-color: rgb(155, 0, 155);
+
+    }
+
+}
