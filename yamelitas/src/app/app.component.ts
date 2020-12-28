@@ -10,16 +10,16 @@ import { environment } from 'src/environments/environment';
 })
 export class AppComponent {
   title = 'yamelitas';
-<<<<<<< HEAD
+
   
   inicio = firebase.default.initializeApp(environment.firebaseConfig);
 
-=======
+
 
   constructor(){
 
   }
 
   
->>>>>>> estructura-inicial
+
 }
