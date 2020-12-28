@@ -1,4 +1,59 @@
 
 <div class="container">
-    Inicio
+    
+    <aside class="barra_lateral" >
+        <nav>
+            <ul>
+
+                <li>Todas</li>
+                <li>#Salud</li>
+                <li>#Cuidado del <br> cabello</li>
+                <li>#Cuidado de <br> la piel</li>
+                <li>#Tips de <br> temporada</li>
+            </ul>
+        </nav>
+
+    </aside>
+
+    <main class="seccion_de_articulos">
+
+
+        <article class="articulo" *ngFor="let publicacion of publicaciones">
+
+            <header>
+                <h1>{{publicacion.titulo}}</h1>
+                <img src="{{publicacion.imagen_portada}}" alt="{{publicacion.img_description}}">
+
+            </header>
+            
+
+            <section>
+                <h2>{{publicacion.contexto}}</h2>
+                <p>{{publicacion.contexto_desarrollo}}</p>
+                
+            </section>
+
+            <section>
+                <h2 class="linea_yamelitas"><a href="">{{publicacion.productos_titulo}} <img src="assets/external_link_icon.svg" alt=""> </a></h2>
+                <p>{{publicacion.productos_desarrollo}}</p>
+                <ul>
+                    <li *ngFor="let producto of publicacion.productos_productos"><img src="assets/flor.svg" alt="una flor"> {{producto}}</li>
+                </ul>
+                
+            </section>
+
+            <footer>
+                <p *ngFor="let hashtag of publicacion.hashtags">{{hashtag}}</p>
+            </footer>
+        </article>
+
+
+
+    </main>
+
+    <div class="espacio_para_redes">
+
+    </div>
+
+
 </div>
