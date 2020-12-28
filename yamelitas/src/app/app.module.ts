@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { ProductosComponent } from './productos/productos.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
-import {AngularFireDatabaseModule} from '@angular/fire/database'
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import { InicioComponent } from './inicio/inicio.component'
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductosComponent
+    ProductosComponent,
+    InicioComponent
     
     
 
