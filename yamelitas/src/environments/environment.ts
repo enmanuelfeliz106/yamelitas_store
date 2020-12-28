@@ -3,8 +3,21 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+
+  firebaseConfig: {
+    apiKey: "AIzaSyCleufU8s2VidaWvM5KsljDED3HvRlywp4",
+    authDomain: "yamelitas-store.firebaseapp.com",
+    projectId: "yamelitas-store",
+    storageBucket: "yamelitas-store.appspot.com",
+    messagingSenderId: "1017216409618",
+    appId: "1:1017216409618:web:ba273e2acfeffd9f3df8cb",
+    measurementId: "G-XS60CQ0L46"
+  }
+
 };
+
+
 
 /*
  * For easier debugging in development mode, you can import the following file
