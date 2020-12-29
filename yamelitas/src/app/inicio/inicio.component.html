@@ -5,11 +5,11 @@
         <nav>
             <ul>
 
-                <li>Todas</li>
-                <li>#Salud</li>
-                <li>#Cuidado del <br> cabello</li>
-                <li>#Cuidado de <br> la piel</li>
-                <li>#Tips de <br> temporada</li>
+                <li (click)="cargarPublicaciones('todas')">Todas</li>
+                <li (click)="cargarPublicaciones('#salud')">#Salud</li>
+                <li (click)="cargarPublicaciones('#cuidadodelcabello')">#Cuidado del <br> cabello</li>
+                <li (click)="cargarPublicaciones('#cuidadodelapiel')">#Cuidado de <br> la piel</li>
+                <li (click)="cargarPublicaciones('#tipsdetemporada')">#Tips de <br> temporada</li>
             </ul>
         </nav>
 

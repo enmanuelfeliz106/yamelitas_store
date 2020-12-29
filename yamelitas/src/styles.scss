@@ -49,8 +49,15 @@ table {
 	border-spacing: 0;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
 *{
 	box-sizing: border-box;
+	font-family: 'Acme', sans-serif;
+	letter-spacing: 0.02em;
+	word-spacing: 0.07em;
 }
 
 h1{
@@ -71,3 +78,4 @@ h3{
 p{
 	font-size: 1.2em;
 }
+
