@@ -22,24 +22,67 @@ interface publicacion{
 
 export class InicioComponent implements OnInit {
 
-  publicaciones: Array<object> = [];
+  publicacion: publicacion = {
+    titulo: '',
+    imagen_portada: '',
+    contexto: '',
+    contexto_desarrollo: '',
+    productos_titulo: '',
+    productos_desarrollo: '',
+    productos_productos: [],
+    hashtags: []
+  };
 
-  constructor() { }
+  titulo: any;
+
+  publicaciones: Array<any> = [];
+
+  constructor() {}
 
   ngOnInit(): void {
-    
-    firebase.default.firestore().collection('publicaciones').get()
-    .then((snapshot) => {
-      snapshot.forEach((doc) => {
-        this.publicaciones.push(doc.data());
-        
-        console.log(doc.id, '=>', doc.data());
+    this.cargarPublicaciones('todas');
+
+  }
+
+
+
+  cargarPublicaciones(filtro: string){
+
+    this.publicaciones = []
+
+    if(filtro == 'todas'){
+        firebase.default.firestore().collection('publicaciones').get()
+      .then((snapshot) => {
+        snapshot.forEach((doc) => {
+          this.publicaciones.push(doc.data());
+          
+
+        });
+      })
+      .catch((err) => {
+        console.log('Error getting documents', err);
       });
-    })
-    .catch((err) => {
-      console.log('Error getting documents', err);
-    });
-   
+
+    } else {
+        firebase.default.firestore().collection('publicaciones').get()
+      .then((snapshot) => {
+        snapshot.forEach((doc) => {
+          let publicacion = doc.data();
+
+          if(publicacion.hashtags.includes(filtro)){
+            this.publicaciones.push(publicacion);
+          }
+          
+          
+          
+        });
+      })
+      .catch((err) => {
+        console.log('Error getting documents', err);
+      });
+
+    } 
+
 
   }
 
