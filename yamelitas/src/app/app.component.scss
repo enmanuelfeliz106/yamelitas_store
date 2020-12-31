@@ -1,14 +1,107 @@
 
 
 
-.logo{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.cabecera{
+    display: grid;
+    grid-template-rows: 1;
+    grid-template-columns: 30% 50% 20%;
 
-    img{
-        width: 80%;
+    .user{
+
+        width: 50%;
+        height: 190px;
+        margin-top: 50px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        background-image: linear-gradient(to bottom,rgba(155, 0, 155, .3), rgba(155, 0, 155, .1));
+        text-align: center;
+
+        .imagen_de_perfil{
+            
+            width: 30%;
+            margin-top: 10px;
+        }
+
+        nav{
+            margin-top: 5px;
+            border-top: 1px solid rgb(236, 236, 236);
+    
+        }
+
+        
+
+        a{  
+            text-decoration: none;
+            color: black;
+            display: block;
+            padding: 2px;
+            margin-top: 5px;
+            border-radius: 10px;
+            
+            
+        }
+
+        img{
+            width: 15px;
+            
+            
+        }
+
+
+
+        a:hover{
+            background-color: rgba(155, 0, 155, .8);
+            color: white;
+
+            img{
+                background-color: white;
+                border-radius: 10px;
+            }
+        }
+
+        
     }
+
+    .logo_yamelitas{
+        width: 100%;
+
+    }
+
+    .redes_sociales{
+
+        position: fixed;
+        right: 0;
+
+        margin-left: auto;
+        margin-top: 50px;
+        width: fit-content;
+        // border-top: 2px solid rgba(0, 0, 0, .8);
+        // border-left: 2px solid rgba(0, 0, 0, .8);
+        // border-bottom: 2px solid rgba(0, 0, 0, .8);
+
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+
+        background-image: linear-gradient(to bottom,rgba(155, 0, 155, .3), rgba(155, 0, 155, .1));
+
+
+       
+
+        img{
+            width: 30px;
+            margin: 10px 15px;
+            cursor: pointer;
+            
+            
+        }
+
+        img:nth-child(2){
+            width: 35px;
+        }
+
+    }
+
+    
     
 }
 
@@ -16,7 +109,6 @@
 
 .list-container{
     display: flex;
-    background-color: rgb(110, 184, 0);
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -25,16 +117,18 @@
     li{
         
         flex: 1;
-        border-right: 1px groove white;
+        border-right: 1px solid white;
         display: flex;
         align-items: center;
         justify-content: center;
+        border: .5px solid rgb(110, 184, 0);
+        border-radius: 10px;
     }
 
     a{
         list-style: none;
         text-decoration: none;
-        color: white;
+        color: rgb(110, 184, 0);
         width: auto;
         font-size: 1.4em;
         font-weight: 400;
@@ -49,15 +143,22 @@
 
     }
 
-    a:active{
-        color: black;
-       
-    }
+    
     
 
     a:hover{
-        background-color: rgb(155, 0, 155);
+        background-color: rgb(110, 184, 0);
+        border-radius: 10px;
+        color: white;
+        
 
+  
+
+    }
+
+    a:active{
+        color: rgb(53, 53, 53);
+       
     }
 
     
@@ -65,5 +166,8 @@
 }
 
 .active-link{
-    background-color: rgb(155, 0, 155);
+    background-color: rgb(110, 184, 0);
+    color: white;
+    border-radius: 10px;
 }
+
