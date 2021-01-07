@@ -175,29 +175,6 @@
 
 }
 
-footer{
-    display: grid;
-    grid-template: 8fr 2fr / repeat(3, 15%);
-    justify-content: center;
-    align-content: center;
-    justify-items: center;
-    align-items: center;
-
-
-    width: 100vw;
-    height: 30vh;
-    
-    background-image: radial-gradient(rgba(110, 184, 0, .4), rgba(155, 0, 155, .3) );
-
-
-    a{
-        display: block;
-        padding: .3em;
-        color: rgba(155, 0, 155, 1);
-        text-decoration: none;
-    }
-    
-}
 
 
 
