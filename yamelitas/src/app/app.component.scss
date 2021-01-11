@@ -147,13 +147,14 @@
         justify-content: center;
         align-items: center;
         border-radius: 10px;
+        
 
         transition: background-color .5s, border-radius 0s, color .3s ;
 
         img{
             width: 7%;
             margin: 10px;
-      
+            
             
 
         }
@@ -242,21 +243,35 @@
 
        &:hover ul{
         
-        li {
-            a{
-                transform: scaleX(1);
-                animation: agrandar 1s;
+            li {
+                a{
+                    transform: scaleX(1);
+                    animation: agrandar 1s;
 
 
-               
+                
+                }
             }
-        }
 
-        .peine{
-            animation: peinar 1s;
+            .peine{
+                animation: peinar 1s;
 
-        }
+            }
         
+
+       }
+
+       &:hover .yamelisticamente-icon{
+            background-color: white;
+            border: 1px solid white;
+            border-radius: 50%;
+
+       }
+
+       li:hover .yametips-icon{
+            background-color: white;
+            border: 1px solid white;
+            border-radius: 50%;
 
        }
 
@@ -289,18 +304,22 @@
        }
 
 
+
+
+
+
     }
 
-    .yamelisticamente-icon{
-        left: 0;
-        position: relative;
+    .yamelisticamente img{
+        left: 1rem;
+        position: absolute;
         transform: scale(1);
         transition: transform 1s, left 1s;
     }
 
 
-    .yamelisticamente:hover{
-        .yamelisticamente-icon{
+    .yamelisticamente a:hover{
+        img{
             transform: scale(3);
             left: -10%;
             
