@@ -4,17 +4,19 @@
 .cabecera{
     display: grid;
     grid-template-rows: 1;
-    grid-template-columns: 30% 50% 20%;
+    grid-template-columns: 20% 60% 20%;
+
 
     .user{
 
         width: 50%;
-        height: 190px;
+        height: 67%;
         margin-top: 50px;
-        border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px;
-        background-image: linear-gradient(to bottom,rgba(155, 0, 155, .3), rgba(155, 0, 155, .1));
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        background-image: linear-gradient(to bottom,rgba(140, 63, 113, .7), rgba(140, 63, 113, .1));
         text-align: center;
+        justify-self: end;
 
         .imagen_de_perfil{
             
@@ -33,25 +35,30 @@
         a{  
             text-decoration: none;
             color: black;
-            display: block;
+            display: flex;
+            justify-content: center;
+            align-content: center;
             padding: 2px;
             margin-top: 5px;
             border-radius: 10px;
             transition: background-color .5s, color .2s, border-radius 0s;
+            padding: .2em;
+            margin: .7em 0;
+            
             
             
         }
 
         img{
-            width: 15px;
-            
-            
+            width: 1em;
+            margin: 0 .4em;
+
         }
 
 
 
         a:hover{
-            background-color: rgba(155, 0, 155, .8);
+            background-color: rgba(140, 63, 113, 1);
             color: white;
 
             img{
@@ -64,26 +71,25 @@
     }
 
     .logo_yamelitas{
-        width: 100%;
+        justify-self: center;
+        width: 70%;    
+        
 
     }
 
     .redes_sociales{
 
         position: fixed;
-        right: 0;
+        left: 0;
+        top: 3vh;
 
         margin-left: auto;
         margin-top: 50px;
         width: fit-content;
-        // border-top: 2px solid rgba(0, 0, 0, .8);
-        // border-left: 2px solid rgba(0, 0, 0, .8);
-        // border-bottom: 2px solid rgba(0, 0, 0, .8);
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
 
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
-
-        background-image: linear-gradient(to bottom,rgba(155, 0, 155, .3), rgba(155, 0, 155, .1));
+        background-image: linear-gradient(to bottom,rgba(140, 63, 113, .5), rgba(140, 63, 113, .1));
 
 
        
@@ -114,6 +120,8 @@
     justify-content: center;
     text-align: center;
     
+
+    
     
     li{
         
@@ -122,14 +130,14 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        border: .5px solid rgb(110, 184, 0);
+        border: .5px solid  rgba(110, 184, 0, .8);
         border-radius: 10px;
     }
 
     a{
         list-style: none;
         text-decoration: none;
-        color: rgb(110, 184, 0);
+        color:  rgba(110, 184, 0, .8);
         width: auto;
         font-size: 1.4em;
         font-weight: 400;
@@ -141,6 +149,19 @@
         border-radius: 10px;
 
         transition: background-color .5s, border-radius 0s, color .3s ;
+
+        img{
+            width: 7%;
+            margin: 10px;
+      
+            
+
+        }
+
+        
+
+        
+
         
         
 
@@ -148,18 +169,32 @@
     }
 
     .active-link{
-        background-color: rgb(110, 184, 0);
+        background-color:  rgba(110, 184, 0, .8);
         color: white;
         border-radius: 10px;
+
+        img{
+            background-color: white;
+            border: 1px solid;
+            border-radius: 50%;
+        }
+
+        
     }
 
     
     
 
     a:hover{
-        background-color: rgb(110, 184, 0);
+        background-color:  rgba(110, 184, 0, .8);
         border-radius: 10px;
         color: white;
+
+        img{
+            background-color: white;
+            border: 1px solid;
+            border-radius: 50%;
+        }
         
 
   
@@ -171,33 +206,143 @@
        
     }
 
+    .yamelisticamente{
+
+
+       position: relative;
+
+        
+       a{
+        width: 100%;
+
+
+        }
+       
+        
+
+       ul{  
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            width: 100%;
+            top: 100%;
+            
+            
+            
+           li{
+               
+               width: 100%;
+
+
+
+      
+           }
+
+       }
+
+       &:hover ul{
+        
+        li {
+            a{
+                transform: scaleX(1);
+                animation: agrandar 1s;
+
+
+               
+            }
+        }
+
+        .peine{
+            animation: peinar 1s;
+
+        }
+        
+
+       }
+
+       .peine{
+           position: absolute;
+           width: 100%;
+           height: 50%;
+           margin: 0;
+           top: 100%;
+           opacity: 0;
+           
+          
+           
+           
+           
+           
+
+
+           img{
     
-
-}
-
-footer{
-    display: grid;
-    grid-template: 8fr 2fr / repeat(3, 15%);
-    justify-content: center;
-    align-content: center;
-    justify-items: center;
-    align-items: center;
-
-
-    width: 100vw;
-    height: 30vh;
-    
-    background-image: radial-gradient(rgba(110, 184, 0, .4), rgba(155, 0, 155, .3) );
+               width: 50%;
+               height: 100px;
+               transform: scaleX(1.8);
+               margin: 0;
+               
+               
+               
+               
+           }
+       }
 
 
-    a{
-        display: block;
-        padding: .3em;
-        color: rgba(155, 0, 155, 1);
-        text-decoration: none;
     }
+
+    .yamelisticamente-icon{
+        left: 0;
+        position: relative;
+        transform: scale(1);
+        transition: transform 1s, left 1s;
+    }
+
+
+    .yamelisticamente:hover{
+        .yamelisticamente-icon{
+            transform: scale(3);
+            left: -10%;
+            
+        }
+
+    }
+
+    @keyframes peinar {
+
+        from{
+            top: -30%;
+            opacity: 1;
+        }
+
+        to{
+            top: 100%;
+            opacity: 0;
+            
+        }
+        
+    }
+
+    @keyframes agrandar {
+
+        from{
+            transform: scaleX(.5);
+        }
+
+        to{
+            transform: scaleX(1);
+        }
+        
+    }
+
+  
+
+
+
+   
+   
+
     
+
 }
-
-
 
