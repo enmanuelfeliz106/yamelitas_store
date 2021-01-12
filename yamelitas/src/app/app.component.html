@@ -1,6 +1,20 @@
 
 <header class="cabecera">
 
+  <div>
+    <ul class="redes_sociales">
+      <li><img src="assets/instagram_logo.png" alt=""></li>
+      <li><img src="assets/whatsapp_logo.png" alt=""></li>
+      <li><img src="assets/gmail_logo.png" alt=""></li>
+     
+    </ul>
+
+  </div>
+
+  
+
+  <img class="logo_yamelitas" src="/assets/yamelitas-logo-blanco.svg" alt="logo de yamelitas">
+
   <div class="user">
     <figure>
       <img class="imagen_de_perfil" src="assets/user.svg" alt="tu foto de perfil">
@@ -14,22 +28,6 @@
 
       </nav>
       
-    
-    
-    
-
-  </div>
-
-  <img class="logo_yamelitas" src="/assets/yamelitas_logo.jpeg" alt="logo de yamelitas">
-
-  <div>
-    <ul class="redes_sociales">
-      <li><img src="assets/instagram_logo.png" alt=""></li>
-      <li><img src="assets/whatsapp_logo.png" alt=""></li>
-      <li><img src="assets/gmail_logo.png" alt=""></li>
-     
-    </ul>
-
   </div>
   
 </header>
@@ -39,16 +37,88 @@
 <div>
   <nav>
     <ul class="list-container">
-      <li><a routerLink="/inicio" routerLinkActive="active-link">Inicio</a></li>
-      <li><a routerLink="/productos" routerLinkActive="active-link">Productos</a></li>
-      <li><a routerLink="/acercade" routerLinkActive="active-link">Acerca de Yamelitas</a></li>
-      <li><a routerLink="/contacto" routerLinkActive="active-link" >Contacto</a></li>
-      <li><a routerLink="/comunidad" routerLinkActive="active-link">Comunidad</a></li>
+
+      <li>
+        <a routerLink="/inicio" routerLinkActive="active-link">
+        <img src="assets/iconos/home-outline.svg" alt="icono de casa, inicio">
+        Inicio
+        </a>
+      </li>
+
+      <li>
+        <a routerLink="/productos" routerLinkActive="active-link">
+          <img src="assets/iconos/pricetag-outline.svg" alt="icono de productos">
+          Productos
+        </a>
+      </li>
+
+
+      <li>
+        <a routerLink="/acercade" routerLinkActive="active-link">
+          <img src="assets/iconos/information-circle-outline.svg" alt="icono de informacion">
+          Acerca de Yamelitas
+        </a>
+      </li>
+
+
+      <li class="yamelisticamente">
+        <a routerLink="/yamelisticamente" routerLinkActive="active-link" >
+          <img  src="assets/yamelitas-iconos/ella-y-yo.svg" alt="icono de yamelisticamente">
+          Yamelisticamente
+        </a>
+
+        <ul>
+
+          <li>
+            <a routerLink="">
+              <img src="assets/yamelitas-iconos/yametips.svg" alt="icono de yametips">
+              Yametips
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="">
+              <img src="assets/yamelitas-iconos/rutinas.svg" alt="icono de bloopers">
+              Bloopers
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="">
+              <img src="assets/yamelitas-iconos/frases.svg" alt="icono de inspiracion">
+              Inspiración
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="">
+              <img src="assets/yamelitas-iconos/clientes.svg" alt="icono de hazlo tu misma">
+              Hazlo tú misma
+            </a>
+          </li>
+
+          <div class="peine">
+            <img src="assets/peine.svg" alt="imagen de peine">
+          </div>
+        </ul>
+        
+      </li>
+
+      <li>
+        <a routerLink="/comunidad" routerLinkActive="active-link">
+          <img src="assets/iconos/help-circle-outline.svg" alt="icono de preguntas frecuentes">
+          Preguntas frecuentes
+        </a>
+      </li>
+
     </ul>
   </nav>
 </div>
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> estructura-inicial
 
 <router-outlet></router-outlet>

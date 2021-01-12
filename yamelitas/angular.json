@@ -123,6 +123,30 @@
               "devServerTarget": "yamelitas:serve:production"
             }
           }
+        },
+        "ionic-cordova-serve": {
+          "builder": "@ionic/angular-toolkit:cordova-serve",
+          "options": {
+            "cordovaBuildTarget": "yamelitas:ionic-cordova-build",
+            "devServerTarget": "yamelitas:serve"
+          },
+          "configurations": {
+            "production": {
+              "cordovaBuildTarget": "yamelitas:ionic-cordova-build:production",
+              "devServerTarget": "yamelitas:serve:production"
+            }
+          }
+        },
+        "ionic-cordova-build": {
+          "builder": "@ionic/angular-toolkit:cordova-build",
+          "options": {
+            "browserTarget": "yamelitas:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "yamelitas:build:production"
+            }
+          }
         }
       }
     }
