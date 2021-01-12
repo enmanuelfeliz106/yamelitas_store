@@ -23,12 +23,8 @@ import { InicioComponent } from './inicio/inicio.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-<<<<<<< HEAD
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule
-=======
-
->>>>>>> estructura-inicial
   ],
   providers: [],
   bootstrap: [AppComponent]

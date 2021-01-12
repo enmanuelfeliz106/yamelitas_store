@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import { environment } from 'src/environments/environment';
-
-=======
-import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
->>>>>>> estructura-inicial
 
 @Component({
   selector: 'app-root',
