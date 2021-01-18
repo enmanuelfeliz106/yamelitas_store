@@ -4,6 +4,7 @@
     justify-content: center;
     flex-wrap: wrap;
     margin: 20px;
+    position: relative;
   
     
 
@@ -14,60 +15,52 @@
         border-left: 5px groove grey;
         border-right: 7px groove grey;
         border-radius: 5px;
-        box-sizing: border-box;
         width: 250px;
-        box-sizing: border-box;
         margin: 15px;
         box-shadow: 5px 5px 10px grey;
-        transition: all 0.5s;
+        transition: all 1s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        
 
         img{
             width: 100%;
 
         }
 
-        a{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.2em;
-            font-weight: 800;
-            text-decoration: underline;
-            color: transparent;
-            background-color: transparent;
-            text-align: center;
-            height: 105%;
-            width: 105%;
-            position: relative;
-            bottom: 185px;
-            margin-bottom: -20px;
-            right: 5px;
-            box-sizing: border-box;
-            
+        :hover{
+            cursor: pointer;
         }
-
-        a:hover{
-            color:black;
-            text-shadow: 5px 5px 10px white, -5px -5px 10px white;
-   
-            
-        
-        }
-
-        
-    
-        
       
         
-    }  
-
-
-}
-
-
-.imagen:hover{
-    opacity: .8;
-    cursor: pointer;
+    } 
     
 
+    .imagen:hover::before{
+
+        content: 'Ver detalles';
+        cursor: pointer;
+        position: absolute;
+        font-size: 1.2em;
+        font-weight: 800;
+        text-decoration: underline;
+        color: white;
+        padding: 1vmin;
+        text-shadow: 10px 10px 10px grey, -10px -10px 10px grey;
+        background-color: var(--yamelitas-morado-9);
+        border-radius: 10px;
+        
+        
+    }
+
+
+
+
 }
+
+
+
+
+
