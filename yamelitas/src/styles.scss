@@ -60,6 +60,36 @@ table {
 	word-spacing: 0.07em;
 }
 
+/******* Inicio de variables */
+
+:root{
+	--yamelitas-morado-10: rgba(107, 18, 107, 1);
+	--yamelitas-morado-9: rgba(107, 18, 107, .9);
+	--yamelitas-morado-8: rgba(107, 18, 107, .8);
+	--yamelitas-morado-7: rgba(107, 18, 107, .7);
+	--yamelitas-morado-6: rgba(107, 18, 107, .6);
+	--yamelitas-morado-5: rgba(107, 18, 107, .5);
+	--yamelitas-morado-4: rgba(107, 18, 107, .4);
+	--yamelitas-morado-3: rgba(107, 18, 107, .3);
+	--yamelitas-morado-2: rgba(107, 18, 107, .2);
+	--yamelitas-morado-1: rgba(107, 18, 107, .1);
+
+	--yamelitas-verde-10: rgba(110, 184, 0, 1);
+	--yamelitas-verde-9: rgba(110, 184, 0, .9);
+	--yamelitas-verde-8: rgba(110, 184, 0, .8);
+	--yamelitas-verde-7: rgba(110, 184, 0, .7);
+	--yamelitas-verde-6: rgba(110, 184, 0, .6);
+	--yamelitas-verde-5: rgba(110, 184, 0, .5);
+	--yamelitas-verde-4: rgba(110, 184, 0, .4);
+	--yamelitas-verde-3: rgba(110, 184, 0, .3);
+	--yamelitas-verde-2: rgba(110, 184, 0, .2);
+	--yamelitas-verde-1: rgba(110, 184, 0, .1);
+}
+
+
+/*Fin de variables *******/
+
+
 h1{
 	font-size: 4.5vmin;
 	font-weight: 400;
