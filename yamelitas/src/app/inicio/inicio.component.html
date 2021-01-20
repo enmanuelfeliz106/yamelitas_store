@@ -2,6 +2,10 @@
 <div class="container">
     
     <aside class="barra_lateral" >
+        <header>
+            <h1>Categorías</h1>
+        </header>
+
         <nav>
             <ul>
 
@@ -40,25 +44,41 @@
 
     </aside>
 
-    <main class="seccion_de_articulos">
+    <main>
 
 
-        <article class="articulo" *ngFor="let publicacion of publicaciones">
+        <article *ngFor="let publicacion of publicaciones">
 
             <header>
                 <h1>{{publicacion.titulo}}</h1>
-                <img src="{{publicacion.imagen_portada}}" alt="{{publicacion.img_description}}">
+                <img class="imagen-articulo" src="{{publicacion.imagen_portada}}" alt="{{publicacion.img_description}}">
+                <div class="info-articulo">
 
+                    <p class="tiempo-lectura">
+                        <img src="assets/iconos/clock-icon.svg" alt="icono de reloj">
+                        Lectura de {{publicacion.tiempo_lectura}} min.
+                    </p>
+
+                    <p class="fecha">
+                        <img src="assets/iconos/calendar.svg" alt="icono de reloj">
+                        {{publicacion.fecha}}
+                    </p>
+                    
+                    <p class="hashtags">
+                        <span *ngFor="let hashtag of publicacion.hashtags">{{hashtag}}</span>
+                    </p>
+                    
+                </div>
             </header>
             
 
-            <section>
+            <section class="contenido">
                 <h2>{{publicacion.contexto}}</h2>
                 <p>{{publicacion.contexto_desarrollo}}</p>
                 
             </section>
 
-            <section>
+            <section class="contenido">
                 <h2 class="linea_yamelitas"><a href="">{{publicacion.productos_titulo}} <img src="assets/external_link_icon.svg" alt=""> </a></h2>
                 <p>{{publicacion.productos_desarrollo}}</p>
                 <ul>
@@ -67,8 +87,9 @@
                 
             </section>
 
-            <footer>
-                <p *ngFor="let hashtag of publicacion.hashtags">{{hashtag}}</p>
+            <footer (click)="contenidoToggle()">
+                {{footerMessage}}
+                <img src="{{slide}}" alt="icono de deslizamiento">
             </footer>
         </article>
 
@@ -76,8 +97,10 @@
 
     </main>
 
-    <div class="espacio_para_redes">
-
+    <div class="post-destacados">
+        <header>
+            <h1>Post destacados</h1>
+        </header>
     </div>
 
 

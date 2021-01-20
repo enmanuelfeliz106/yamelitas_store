@@ -4,18 +4,23 @@
     display: grid;
     grid-template-rows: 1;
     grid-template-columns: 20% 60% 20%;
+    position: relative;
 
 
     .user{
 
-        width: 75%;
-        height: 78%;
+        width: 20%;
         margin-top: 50px;
         border-top-left-radius: 10px;
         border-bottom-left-radius: 10px;
         background-image: linear-gradient(to bottom,var(--yamelitas-morado-7), var(--yamelitas-morado-1));
         text-align: center;
         justify-self: end;
+        position: fixed;
+        z-index: 1100;
+        right: -15%;
+        transition: right .7s;
+        backdrop-filter: blur(10px);
       
 
         .imagen_de_perfil{
@@ -41,7 +46,7 @@
             text-decoration: none;
             color: black;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             align-content: center;
             padding: .5rem;
             border-radius: 10px;
@@ -55,7 +60,7 @@
 
         img{
             width: 1em;
-            margin: 0 .4em;
+            margin: 0 2rem;
 
         }
 
@@ -72,6 +77,26 @@
         }
 
         
+    }
+
+    .user:hover{
+        right: 0;
+
+        .imagen_de_perfil{
+            
+            width: 8vmin;
+            margin-top: 1vh;
+        }
+
+        a{
+            justify-content: center;
+        }
+
+        img{
+            width: 1em;
+            margin: 0 .4em;
+
+        }
     }
 
     .logo_yamelitas{
@@ -123,6 +148,8 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    position: relative;
+    z-index: 1000;
     
 
     

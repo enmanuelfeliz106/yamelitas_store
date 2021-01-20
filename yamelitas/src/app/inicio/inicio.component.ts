@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
+import * as $ from 'jquery';
 
 interface publicacion{
   titulo: string;
   imagen_portada: string;
+  tiempo_lectura: number;
+  fecha: string;
   contexto: string;
   contexto_desarrollo: string;
   productos_titulo: string;
@@ -25,6 +28,8 @@ export class InicioComponent implements OnInit {
   publicacion: publicacion = {
     titulo: '',
     imagen_portada: '',
+    tiempo_lectura: 0,
+    fecha: '',
     contexto: '',
     contexto_desarrollo: '',
     productos_titulo: '',
@@ -33,14 +38,18 @@ export class InicioComponent implements OnInit {
     hashtags: []
   };
 
+  footerMessage = 'Ver contenido'
+  slide = 'assets/iconos/slide-down-icon.svg';
+
   titulo: any;
 
   publicaciones: Array<any> = [];
 
   constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit(){
     this.cargarPublicaciones('todas');
+
 
   }
 
@@ -84,6 +93,23 @@ export class InicioComponent implements OnInit {
     } 
 
 
+  }
+
+  contenidoToggle(){
+    $('.contenido').toggle(500);
+
+    switch(this.footerMessage){
+      case 'Ver contenido':
+        this.footerMessage = 'Ocultar contenido';
+        this.slide = 'assets/iconos/slide-up-icon.svg';
+        $('footer').css('border-top', '1px solid rgba(0, 0, 0, .5)')
+        break
+
+      default:
+        this.footerMessage = 'Ver contenido';
+        this.slide = 'assets/iconos/slide-down-icon.svg';
+        $('footer').css('border-top', 'none')
+    }
   }
 
 
