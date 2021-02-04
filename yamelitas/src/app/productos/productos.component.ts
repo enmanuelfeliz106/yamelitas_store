@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import * as $ from 'jquery';
+import * as fa from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-productos',
@@ -9,7 +10,11 @@ import * as $ from 'jquery';
 })
 export class ProductosComponent implements OnInit {
 
-  imagenes: any = []
+  iconoDinero = fa.faDollarSign;
+  iconoFuncion = fa.faVial;
+  searchIcon = fa.faSearch;
+
+  productos: any = []
 
   constructor() {
 
@@ -17,7 +22,7 @@ export class ProductosComponent implements OnInit {
     firebase.default.firestore().collection('productos').get()
     .then((snapshot) => {
       snapshot.forEach((doc) => {
-        this.imagenes.push(doc.get('imagen'));
+        this.productos.push(doc.get('imagen'));
         
         console.log(doc.id, '=>', doc.data());
       });

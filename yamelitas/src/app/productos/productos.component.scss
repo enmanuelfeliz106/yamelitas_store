@@ -1,57 +1,145 @@
 
 .container{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 20px;
+    width: 90%;
+    margin: 2rem 3.5rem;
+    display: grid;
+    grid-template: 1fr 9fr / 60% 40%;
+    color: rgba(0, 0, 0, .8);
     position: relative;
-  
-    
 
-    .imagen{
+    nav{
+        grid-column-start: span 2;
+        display: grid;
+        grid-template: 1fr / 1fr 8fr 1fr;
+        font-size: 1rem;
+
+        .buscador{
+            display: flex;
+            justify-content: center;
+        }
         
-        border-top: 5px groove gainsboro;
-        border-bottom: 5px groove gainsboro;
-        border-left: 5px groove grey;
-        border-right: 7px groove grey;
-        border-radius: 5px;
-        width: 250px;
-        margin: 15px;
-        box-shadow: 5px 5px 10px grey;
-        transition: all 1s;
+
+        button{
+            margin-left: .5rem;
+            padding: .25rem 1rem;
+            font-size: inherit;
+            background-color: var(--yamelitas-verde-9);
+            color: white;
+            border-radius: .25rem;
+            cursor: pointer;
+            
+        }
+
+        input{
+            width: 100%;
+            padding: .25rem 1rem;
+            font-size: inherit;
+        }
+
+        input:focus{
+            background-color: var(--yamelitas-verde-4);
+        }
+
+        fa-icon{
+            padding: .25rem;
+            padding: .25rem 1rem;
+            font-size: inherit;
+            cursor: pointer;
+            align-self: center;
+        }
+    }
+
+    main{
+        display: flex;
+    }
+
+
+    .producto{
+        width: fit-content;
         display: flex;
         justify-content: center;
-        align-items: center;
-        
-        
+        flex-direction: column;
+        text-align: center;
+        border: 1px solid var(--yamelitas-morado-2);
+        padding: 1rem;
+        border-radius: .25rem;
+        margin: 1vmin;
+        transition: background-color .5s, color .5s;
+
+
+
 
         img{
-            width: 100%;
+            border-top: 5px groove gainsboro;
+            border-bottom: 5px groove gainsboro;
+            border-left: 5px groove grey;
+            border-right: 7px groove grey;
+            border-radius: 5px;
+            width: 250px;
+            box-shadow: 5px 5px 10px grey;
+            transition: transform .5s;
+          
+            
+        } 
 
+
+    }
+
+
+    .producto:hover{
+
+        background-color: var(--yamelitas-morado-8);
+        color: aliceblue;
+        cursor: pointer;
+
+        img{
+            animation: contraer-agrandar .5s linear;
+        }
+    }
+
+    @keyframes contraer-agrandar {
+        0%{
+            transform: rotate(0);
         }
 
-        :hover{
-            cursor: pointer;
+        25%{
+            transform: rotate(5deg);
         }
-      
-        
-    } 
+
+        50%{
+            transform: rotate(-5deg);
+        }
+
+        100%{
+            transform: rotate(0);
+        }
+    }
+  
+    
     
 
-    .imagen:hover::before{
+    .overview{
+        display: grid;
+        grid-template: 3fr 1fr 1fr / 10% 90%;
+        width: 250px; 
+        text-align: initial; 
 
-        content: 'Ver detalles';
-        cursor: pointer;
-        position: absolute;
-        font-size: 1.2em;
-        font-weight: 800;
-        text-decoration: underline;
-        color: white;
-        padding: 1vmin;
-        text-shadow: 10px 10px 10px grey, -10px -10px 10px grey;
-        background-color: var(--yamelitas-morado-9);
-        border-radius: 10px;
-        
+
+
+        h1{
+            font-size: 1.4rem;
+            margin: 1.8vmin;
+            text-align: center;
+            grid-column-start: span 2;
+            text-shadow: 1px 1px 5px grey;
+            border-bottom: 1px solid grey;
+            padding: .5rem;
+        }   
+
+        p{
+            font-size: 1rem;
+        }
+
         
     }
 

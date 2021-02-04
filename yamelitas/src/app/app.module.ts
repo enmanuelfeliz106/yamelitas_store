@@ -7,7 +7,8 @@ import { ProductosComponent } from './productos/productos.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
-import { InicioComponent } from './inicio/inicio.component'
+import { InicioComponent } from './inicio/inicio.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 
 
@@ -24,7 +25,9 @@ import { InicioComponent } from './inicio/inicio.component'
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    FontAwesomeModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
