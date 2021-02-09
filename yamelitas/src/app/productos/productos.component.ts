@@ -16,16 +16,20 @@ export class ProductosComponent implements OnInit {
 
   productos: any = []
 
+  productoElegido: any;
+
   constructor() {
 
 
     firebase.default.firestore().collection('productos').get()
     .then((snapshot) => {
       snapshot.forEach((doc) => {
-        this.productos.push(doc.get('imagen'));
+        this.productos.push(doc.data());
         
-        console.log(doc.id, '=>', doc.data());
+        
       });
+
+      this.productoElegido = this.productos[0];
     })
     .catch((err) => {
       console.log('Error getting documents', err);
@@ -34,6 +38,17 @@ export class ProductosComponent implements OnInit {
 
   ngOnInit(): void {
 
+    
+  }
+
+  elegirProducto(productoIndex: any){
+
+    $('.producto').removeClass('producto-elegido');
+
+    $(`.producto${productoIndex}`).addClass('producto-elegido');
+
+
+    this.productoElegido = this.productos[productoIndex];
     
   }
 

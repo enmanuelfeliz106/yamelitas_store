@@ -3,15 +3,16 @@
     width: 90%;
     margin: 2rem 3.5rem;
     display: grid;
-    grid-template: 1fr 9fr / 60% 40%;
+    grid-template: 1fr 9fr / 6fr 4fr;
     color: rgba(0, 0, 0, .8);
     position: relative;
 
     nav{
         grid-column-start: span 2;
         display: grid;
-        grid-template: 1fr / 1fr 8fr 1fr;
+        grid-template: 1fr / 1fr 5fr;
         font-size: 1rem;
+        margin: 0 auto;
 
         .buscador{
             display: flex;
@@ -51,6 +52,7 @@
 
     main{
         display: flex;
+        margin-top: 1rem;
     }
 
 
@@ -60,7 +62,7 @@
         justify-content: center;
         flex-direction: column;
         text-align: center;
-        border: 1px solid var(--yamelitas-morado-2);
+        border: 1px solid var(--yamelitas-morado-4);
         padding: 1rem;
         border-radius: .25rem;
         margin: 1vmin;
@@ -115,7 +117,10 @@
         }
     }
   
-    
+    .producto-elegido{
+        background-color: var(--yamelitas-morado-8);
+        color: aliceblue;
+    }
     
 
     .overview{
@@ -141,6 +146,21 @@
         }
 
         
+    }
+
+    aside{
+        display: flex;
+        flex-direction: column;
+        margin-top: 1.5rem;
+        border: 1px solid var(--yamelitas-verde-8);
+        border-radius: .25rem;
+
+        h1{
+            text-align: center;
+            padding: 1rem;
+            border-bottom: 1px solid var(--yamelitas-verde-8);
+            color: var(--yamelitas-verde-8);
+        }
     }
 
 

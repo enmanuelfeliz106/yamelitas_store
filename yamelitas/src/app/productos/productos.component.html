@@ -8,30 +8,28 @@
         </button>
 
         <div class="buscador">
-            <input type="text" name="buscador" placeholder="Cual producto quieres ver?">
+            <input type="text" name="buscador" placeholder="Cual producto quieres comprar?">
             <fa-icon [icon]="searchIcon"></fa-icon>
             
         </div>
-
-        <div></div>
 
         
     </nav>
 
     <main>
-        <div class="producto" *ngFor="let producto of productos">
+        <div class="producto producto{{i}}" *ngFor="let producto of productos; index as i" (click)="elegirProducto(i)">
 
-            <img  src="{{producto}}" alt="imagen">
+            <img  src="{{producto.imagen}}" alt="imagen">
         
     
             <div class="overview">
-                <h1>Nombre del producto ejemplo ejemplo ejemplo</h1>
+                <h1>{{producto.nombre}}</h1>
     
                 <fa-icon [icon]="iconoDinero"></fa-icon>
-                <p> 500 DOP</p>
+                <p> {{producto.precio}} DOP</p>
     
                 <fa-icon [icon]="iconoFuncion"></fa-icon>
-                <p> Un producto para el pelo que sirve para tal o cual cosa</p>
+                <p> {{producto.overview}}</p>
     
             </div>
     
@@ -45,6 +43,24 @@
     
 
     <aside>
+
+        <div class="detalles">
+            <h1>Detalles del producto</h1>
+
+            <p>Nombre: {{productoElegido.nombre}}</p>
+            <p>Resumen: {{productoElegido.overview}}</p>
+            <p>Descripción: {{productoElegido.descripcion}}</p>
+            <p>Precio: {{productoElegido.precio}}</p>
+
+        </div>
+
+
+        <div class="comentarios">
+            <h2>Comentarios</h2>
+            
+        </div>
+
+
 
     </aside>
 
