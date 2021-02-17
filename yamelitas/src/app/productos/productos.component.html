@@ -1,40 +1,53 @@
 
 
+
 <div class="container">
 
     <nav>
         <button>Todos
-
+    
         </button>
-
+    
         <div class="buscador">
             <input type="text" name="buscador" placeholder="Cual producto quieres comprar?">
             <fa-icon [icon]="searchIcon"></fa-icon>
             
         </div>
-
+    
         
     </nav>
 
     <main>
-        <div class="producto producto{{i}}" *ngFor="let producto of productos; index as i" (click)="elegirProducto(i)">
+        <div id="lista-productos" class="lista-productos">
+            <div class="producto producto{{i}}" *ngFor="let producto of productos; index as i" (click)="elegirProducto(i)">
 
-            <img  src="{{producto.imagen}}" alt="imagen">
+                <img  src="{{producto.imagen}}" alt="imagen">
+            
         
-    
-            <div class="overview">
-                <h1>{{producto.nombre}}</h1>
-    
-                <fa-icon [icon]="iconoDinero"></fa-icon>
-                <p> {{producto.precio}} DOP</p>
-    
-                <fa-icon [icon]="iconoFuncion"></fa-icon>
-                <p> {{producto.overview}}</p>
-    
+                <div class="overview">
+                    <h1>{{producto.nombre}}</h1>
+        
+                    <fa-icon [icon]="iconoDinero"></fa-icon>
+                    <p> {{producto.precio}} DOP</p>
+        
+                    <fa-icon [icon]="iconoFuncion"></fa-icon>
+                    <p> {{producto.overview}}</p>
+        
+                </div>
+        
+        
+        
             </div>
-    
-    
-    
+
+        </div>
+        
+
+        <div class="swipe-left" id="swipe-left" (click)="swipeLeft()">
+            <fa-icon [icon]="chevronLeft"></fa-icon>
+        </div>
+
+        <div class="swipe-right" id="swipe-right" (click)="swipeRight()">
+            <fa-icon [icon]="chevronRight"></fa-icon>
         </div>
 
 
@@ -47,16 +60,29 @@
         <div class="detalles">
             <h1>Detalles del producto</h1>
 
-            <p>Nombre: {{productoElegido.nombre}}</p>
-            <p>Resumen: {{productoElegido.overview}}</p>
-            <p>Descripción: {{productoElegido.descripcion}}</p>
-            <p>Precio: {{productoElegido.precio}}</p>
+            <ul>
+                <li>Nombre: {{productoElegido.nombre}}</li>
+                <li>Resumen: {{productoElegido.overview}}</li>
+                <li>Descripción: {{productoElegido.descripcion}}</li>
+                <li>Precio: {{productoElegido.precio}}</li>
+            </ul>
+
 
         </div>
 
 
         <div class="comentarios">
             <h2>Comentarios</h2>
+
+            <div class="comentario">
+                <img src="/assets/user.svg" alt="imagen del usuario que hizo el comentario">
+            
+                <p><strong>Shelly Cordero</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque quaerat non iusto quia praesentium debitis inventore tenetur, ex possimus adipisci assumenda asperiores, sapiente minima corporis dignissimos! Quas quis molestias ipsum!
+                    <small>8/2/2021</small></p>
+
+               
+                
+            </div>
             
         </div>
 

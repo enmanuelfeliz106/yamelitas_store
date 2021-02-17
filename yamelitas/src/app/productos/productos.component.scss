@@ -1,9 +1,9 @@
 
 .container{
     width: 90%;
-    margin: 2rem 3.5rem;
-    display: grid;
-    grid-template: 1fr 9fr / 6fr 4fr;
+    margin: 2rem 5vw;
+    display: flex;
+    flex-direction: column;
     color: rgba(0, 0, 0, .8);
     position: relative;
 
@@ -13,10 +13,12 @@
         grid-template: 1fr / 1fr 5fr;
         font-size: 1rem;
         margin: 0 auto;
+        height: 5vmin;
 
         .buscador{
             display: flex;
             justify-content: center;
+            
         }
         
 
@@ -51,13 +53,84 @@
     }
 
     main{
-        display: flex;
-        margin-top: 1rem;
+
+            width: 100%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: nowrap;
+            overflow: hidden;
+            margin: 1rem auto;
+            border-top: 1px solid var(--yamelitas-morado-7);
+            border-bottom: 1px solid var(--yamelitas-morado-7);
+
+        .lista-productos{
+            width: 100%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: nowrap;
+            overflow: hidden;
+            margin: 1rem auto;
+            
+
+        }
+        
+
+        .swipe-left, .swipe-right{
+            position: absolute;
+            height: 100%;
+            width: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: .5rem;
+            color: rgb(39, 39, 39);
+
+            transition: background-color .5s;
+
+            fa-icon{
+                width: 50%;
+                font-size: 3rem;
+                background: var(--yamelitas-morado-7);
+                border-radius: 50%;
+                transition: background-color .5s, color .5s;
+                
+            }
+    
+
+        }
+
+        .swipe-left:hover, .swipe-right:hover{
+            background-color: var(--yamelitas-morado-7);
+            color: white;
+            cursor: pointer;
+            
+            fa-icon{
+                background-color: transparent;
+            }
+        }
+
+        
+        .swipe-left{
+            left: 0;
+        }
+
+        .swipe-right{
+            right: 0;
+        }
+       
     }
 
 
     .producto{
+        position: relative;
+        left: 0;
         width: fit-content;
+        height: fit-content;
         display: flex;
         justify-content: center;
         flex-direction: column;
@@ -66,7 +139,7 @@
         padding: 1rem;
         border-radius: .25rem;
         margin: 1vmin;
-        transition: background-color .5s, color .5s;
+        transition: background-color .5s, color .5s, left .75s, right .75s;
 
 
 
@@ -125,15 +198,16 @@
 
     .overview{
         display: grid;
-        grid-template: 3fr 1fr 1fr / 10% 90%;
+        grid-template: 2fr 1fr 1fr / 1fr 9fr;
         width: 250px; 
         text-align: initial; 
 
 
 
         h1{
+            align-self: center;
             font-size: 1.4rem;
-            margin: 1.8vmin;
+            margin: 1rem auto;
             text-align: center;
             grid-column-start: span 2;
             text-shadow: 1px 1px 5px grey;
@@ -142,24 +216,92 @@
         }   
 
         p{
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
 
         
     }
 
     aside{
+
+        width: 90%;
         display: flex;
         flex-direction: column;
-        margin-top: 1.5rem;
+        margin: .4rem auto;
         border: 1px solid var(--yamelitas-verde-8);
         border-radius: .25rem;
+        background-image: url('/assets/flowers-background.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 2rem;
+
+        .detalles{
+            background-color: #fcf0fa;
+            border: 1px solid #f2cee9;
+            border-radius: .25rem;
+        }
+        
 
         h1{
             text-align: center;
             padding: 1rem;
-            border-bottom: 1px solid var(--yamelitas-verde-8);
-            color: var(--yamelitas-verde-8);
+            border-bottom: 1px solid var(--yamelitas-morado-4);
+            border-radius: .25rem;
+            color: black;
+        }
+
+        ul{
+            display: flex;
+            flex-direction: column;
+            color: black;
+            padding: 1rem;
+        }
+
+        li{
+            padding: .7rem;
+            font-size: 1.1rem;
+        }
+
+        .comentarios{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            margin-top: 1rem;
+            background-color: #fcf0fa;
+            border: 1px solid #f2cee9;
+            border-radius: .25rem;
+            
+
+            .comentario{
+                display: grid;
+                grid-template: 1fr / 1fr 9fr;
+                justify-content: center;
+                align-items: center;
+                padding: 1rem;
+                border-top: 1px solid var(--yamelitas-morado-4);
+                
+
+                img{
+                    width: 50px;
+                    margin: 0 auto;
+                    padding: 0;
+                    
+                }
+
+                p{
+                    font-size: 1.1rem;
+                    strong{
+                        color: var(--yamelitas-morado-7);
+                    }
+                }
+            }
+
+            h2{
+                padding: 1rem;
+                text-align: center;
+            }
+
+
         }
     }
 
