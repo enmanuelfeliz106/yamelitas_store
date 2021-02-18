@@ -3,6 +3,17 @@ import * as firebase from 'firebase';
 import * as $ from 'jquery';
 import * as fa from '@fortawesome/free-solid-svg-icons';
 import { DOCUMENT } from '@angular/common';
+import { event } from 'jquery';
+
+export interface Producto{
+  nombre: string;
+  overview: string;
+  imagen: string;
+  precio: number;
+  descripcion?: string;
+  comentarios?: Array<string>;
+
+}
 
 @Component({
   selector: 'app-productos',
@@ -23,28 +34,43 @@ export class ProductosComponent implements OnInit {
 
   
 
-  productos: any = [];
+  productos: Array<Producto> = [];
 
   productoElegido: any;
+
+  filtroProductos: Array<Producto> = this.productos; 
+  filtroTexto: string = '';
 
   constructor() {
 
     firebase.default.firestore().collection('productos').get()
     .then((snapshot) => {
       snapshot.forEach((doc) => {
-        this.productos.push(doc.data());
-        this.productos.push(doc.data());
-        this.productos.push(doc.data());
-        this.productos.push(doc.data());
-        this.productos.push(doc.data());
+        let producto: Producto = {
+          nombre: doc.data().nombre,
+          overview: doc.data().overview,
+          imagen: doc.data().imagen,
+          precio: doc.data().precio,
+          descripcion: doc.data().descripcion,
+          comentarios: doc.data().comentarios
+
+        }  
+
+        this.productos.push(producto);
+        this.productos.push(producto);
+        this.productos.push(producto);
+        this.productos.push(producto);
+        this.productos.push(producto);
+
+
   
         
         
       });
 
       this.productoElegido = this.productos[0];
-      this.leftMoves = Math.floor(this.productos.length / 2);
-      this.rightMoves = Math.floor(this.productos.length / 2);
+      this.leftMoves = Math.floor(this.filtroProductos.length / 2);
+      this.rightMoves = Math.floor(this.filtroProductos.length / 2);
       
 
     })
@@ -56,6 +82,16 @@ export class ProductosComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
+    const BUSCADOR = document.getElementById('buscador');
+
+    if(BUSCADOR){
+      BUSCADOR.addEventListener('input', e => {
+        this.filtrar(this.filtroTexto);
+      });
+
+    }
+    
     
 
     addEventListener('keydown', e => {
@@ -107,6 +143,38 @@ export class ProductosComponent implements OnInit {
 
     
     
+  }
+
+  filtrar(texto: string){
+
+    if(texto === '' || texto === ' '){
+      this.filtroProductos = this.productos;
+      this.leftMoves = Math.floor(this.filtroProductos.length / 2);
+      this.rightMoves = Math.floor(this.filtroProductos.length / 2);
+      this.centralizarProductos();
+    } else {
+      this.filtroProductos =  this.productos.filter(producto => producto.nombre.includes(texto));
+      this.leftMoves = Math.floor(this.filtroProductos.length / 2);
+      this.rightMoves = Math.floor(this.filtroProductos.length / 2);
+      this.centralizarProductos();
+    }
+
+
+    
+  }
+
+  centralizarProductos(){
+    const contenedorProductosElement = document.getElementById('lista-productos');
+    if (contenedorProductosElement){
+      const listaProductosElements = Array.from(contenedorProductosElement.querySelectorAll('div')); 
+      this.posicionHorizontalProductos = 0;
+
+      listaProductosElements.forEach(producto => {
+       producto.style.left = '0';
+        
+      });
+
+    }
   }
 
   swipeRight(){

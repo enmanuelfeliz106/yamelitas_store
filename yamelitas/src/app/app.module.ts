@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import { InicioComponent } from './inicio/inicio.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -27,6 +28,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     FontAwesomeModule,
+    FormsModule
     
   ],
   providers: [],

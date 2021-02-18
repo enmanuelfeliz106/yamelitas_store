@@ -9,7 +9,7 @@
         </button>
     
         <div class="buscador">
-            <input type="text" name="buscador" placeholder="Cual producto quieres comprar?">
+            <input id="buscador" type="text" name="buscador" placeholder="Cual producto quieres comprar?" [(ngModel)] = "filtroTexto">
             <fa-icon [icon]="searchIcon"></fa-icon>
             
         </div>
@@ -19,7 +19,7 @@
 
     <main>
         <div id="lista-productos" class="lista-productos">
-            <div class="producto producto{{i}}" *ngFor="let producto of productos; index as i" (click)="elegirProducto(i)">
+            <div class="producto producto{{i}}" *ngFor="let producto of filtroProductos; index as i" (click)="elegirProducto(i)">
 
                 <img  src="{{producto.imagen}}" alt="imagen">
             
