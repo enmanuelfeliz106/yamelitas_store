@@ -4,9 +4,11 @@ import * as $ from 'jquery';
 import * as fa from '@fortawesome/free-solid-svg-icons';
 import { DOCUMENT } from '@angular/common';
 import { event } from 'jquery';
+import { text } from '@fortawesome/fontawesome-svg-core';
 
 export interface Producto{
   nombre: string;
+  categoria: string;
   overview: string;
   imagen: string;
   precio: number;
@@ -27,6 +29,15 @@ export class ProductosComponent implements OnInit {
   searchIcon = fa.faSearch;
   chevronLeft = fa.faChevronLeft;
   chevronRight = fa.faChevronRight;
+  chevronDown = fa.faChevronDown;
+  clipboardList = fa.faClipboardList;
+
+  categorias: any[] = ['cabello', 'piel (cara)', 'piel (cuerpo)', 'nails'];
+  allCategories: any[] = ['cabello', 'piel (cara)', 'piel (cuerpo)', 'nails'];
+  
+
+  categoriaElegida = 'Todos';
+  slideDown = false;
 
   posicionHorizontalProductos = 0; // variable utilizada para mover los elementos horizontalmente
   leftMoves = 0; // Contar los pasos para evitar el swipe cuando se acabe la lista de productos
@@ -36,58 +47,35 @@ export class ProductosComponent implements OnInit {
 
   productos: Array<Producto> = [];
 
-  productoElegido: any;
+  productoElegido: Producto = {
+    nombre: '',
+    categoria: '',
+    overview: '',
+    imagen: '',
+    precio: 0
+  };
 
-  filtroProductos: Array<Producto> = this.productos; 
   filtroTexto: string = '';
+  sugerenciasBuscador: Producto[] = [];
+
 
   constructor() {
 
-    firebase.default.firestore().collection('productos').get()
-    .then((snapshot) => {
-      snapshot.forEach((doc) => {
-        let producto: Producto = {
-          nombre: doc.data().nombre,
-          overview: doc.data().overview,
-          imagen: doc.data().imagen,
-          precio: doc.data().precio,
-          descripcion: doc.data().descripcion,
-          comentarios: doc.data().comentarios
-
-        }  
-
-        this.productos.push(producto);
-        this.productos.push(producto);
-        this.productos.push(producto);
-        this.productos.push(producto);
-        this.productos.push(producto);
-
-
-  
-        
-        
-      });
-
-      this.productoElegido = this.productos[0];
-      this.leftMoves = Math.floor(this.filtroProductos.length / 2);
-      this.rightMoves = Math.floor(this.filtroProductos.length / 2);
-      
-
-    })
-    .catch((err) => {
-      console.log('Error getting documents', err);
-    });
+    this.cargarProductos('categoria', 'in', this.categorias);
 
     
-   }
+    
+    
+  }
 
   ngOnInit(): void {
 
     const BUSCADOR = document.getElementById('buscador');
+    const CATEGORIA = document.getElementById('categoria-elegida');
 
     if(BUSCADOR){
       BUSCADOR.addEventListener('input', e => {
-        this.filtrar(this.filtroTexto);
+        this.mostrarSugerencias(this.filtroTexto);
       });
 
     }
@@ -105,10 +93,136 @@ export class ProductosComponent implements OnInit {
         this.swipeLeft();
       }
     });
+
+    //Funcion slide down/slide up para las categorias
+
+    $('#categorias-container .categorias').hide();
+
+    // Elegir Categoria
+
+    const categoria = document.getElementById('categorias');
+
+    if(categoria){
+
+      categoria.addEventListener('click', e => {
+
+        this.categorias = Array.from(categoria.querySelectorAll('li'));
+
+        let antiguaCategoriaElegida = this.categoriaElegida;
+
+        let t: any = e.target;
+        let elemento = this.categorias.indexOf(t);
+        
+        for(let categoria of this.categorias){
+          this.categorias[this.categorias.indexOf(categoria)] = categoria.textContent;
+        }
+        
+        this.categoriaElegida = this.categorias[elemento];
+
+        
+
+        this.categorias[elemento] = antiguaCategoriaElegida; 
+
+        
+      });
+    }
+
+    //------------------------------------------------------------
+
+    if(BUSCADOR){
+
+
+      BUSCADOR.addEventListener('focus', () => {
+        this.mostrarSugerencias(this.filtroTexto);
+      });
+      
+    }
+
+    
+
+  }
+
+  cargarProductos(filtro: string, query: any, valor: any){
+
+    this.productos = [];
+    
+    firebase.default.firestore().collection('productos').where(filtro, query, valor).get()
+    .then((snapshot) => {
+      snapshot.forEach((doc) => {
+        let producto: Producto = {
+          nombre: doc.data().nombre,
+          categoria: doc.data().categoria,
+          overview: doc.data().overview,
+          imagen: doc.data().imagen,
+          precio: doc.data().precio,
+          descripcion: doc.data().descripcion,
+          comentarios: doc.data().comentarios
+
+        }  
+
+        this.productos.push(producto);
+        
+
+      });
+
+      this.productoElegido = this.productos[0];
+      this.leftMoves = Math.floor(this.productos.length / 2);
+      this.rightMoves = Math.floor(this.productos.length / 2);
+      
+      
+
+    })
+    .catch((err) => {
+      console.log('Error getting documents', err);
+    });
+  }
+
+  desplegarCategorias(){
+    if(!this.slideDown){
+
+      $('#categorias-container .categorias').stop().slideDown( 300, function() {
+
+        
+  
+      });
+
+      $('#categorias-container fa-icon').addClass('rotar');
+
+      this.slideDown = true;
+
+    } else {
+
+
+      $('#categorias-container .categorias').stop().slideUp( 300, function() {
+
+        
+
+      });
+
+      $('#categorias-container fa-icon').removeClass('rotar');
+        
+
+
+      this.slideDown = false;
+
+    }
+
     
   }
 
-  elegirProducto(productoIndex: any){
+  filtrarCategoria(categoria: string){
+
+    if(categoria === 'Todos'){
+      this.cargarProductos('categoria', 'in', this.allCategories);
+    } else {
+      this.cargarProductos('categoria', 'in', [categoria]);
+    }
+
+    
+  }
+
+
+  elegirProducto(productoIndex: number){
 
     $('.producto').removeClass('producto-elegido');
 
@@ -145,21 +259,43 @@ export class ProductosComponent implements OnInit {
     
   }
 
-  filtrar(texto: string){
 
-    if(texto === '' || texto === ' '){
-      this.filtroProductos = this.productos;
-      this.leftMoves = Math.floor(this.filtroProductos.length / 2);
-      this.rightMoves = Math.floor(this.filtroProductos.length / 2);
-      this.centralizarProductos();
+  mostrarSugerencias(texto: string){
+    
+    this.sugerenciasBuscador = [];
+
+    if(texto.trim() === ''){
+      
+
     } else {
-      this.filtroProductos =  this.productos.filter(producto => producto.nombre.includes(texto));
-      this.leftMoves = Math.floor(this.filtroProductos.length / 2);
-      this.rightMoves = Math.floor(this.filtroProductos.length / 2);
-      this.centralizarProductos();
+
+      
+      this.sugerenciasBuscador = this.productos.filter( producto => producto.nombre.includes(texto));
+      
     }
 
 
+    
+  }
+
+  filtrarPorNombre(producto: Producto){
+    
+    let i = this.productos.indexOf(producto);
+
+    let antiguo = this.productos[0];
+
+    this.productos[0] = this.productos[i];
+    this.productos[i] = antiguo;
+
+    
+    
+    this.sugerenciasBuscador = [];
+
+    this.elegirProducto(i);
+
+    this.productoElegido = this.productos[0];
+
+    
     
   }
 
@@ -200,6 +336,8 @@ export class ProductosComponent implements OnInit {
 
   
   }
+
+  
 
 
 

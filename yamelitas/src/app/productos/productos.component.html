@@ -4,13 +4,28 @@
 <div class="container">
 
     <nav>
-        <button>Todos
-    
-        </button>
+        <div id="categorias-container" class="categorias-container" (click)="desplegarCategorias()">
+            <ul>
+                <li id="categoria-elegida" class="categoria-elegida">{{categoriaElegida}}
+                    <fa-icon [icon]="chevronDown"></fa-icon>
+                    <ul id="categorias" class="categorias">
+                        <li *ngFor="let categoria of categorias" (click)="filtrarCategoria(categoria)">{{categoria}}</li>
+                        
+                    </ul>
+                </li>
+                
+            </ul>
+        </div>
     
         <div class="buscador">
-            <input id="buscador" type="text" name="buscador" placeholder="Cual producto quieres comprar?" [(ngModel)] = "filtroTexto">
+            <input id="buscador" type="text" name="buscador" placeholder="{{categoriaElegida + ': nombre del producto'}}" [(ngModel)] = "filtroTexto">
             <fa-icon [icon]="searchIcon"></fa-icon>
+
+            <div id="sugerencias-buscador" class="sugerencias-buscador">
+                <ul>
+                    <li *ngFor="let sugerencia of sugerenciasBuscador" (click)="filtrarPorNombre(sugerencia)">{{sugerencia.nombre}}</li>
+                </ul>
+            </div>
             
         </div>
     
@@ -19,13 +34,16 @@
 
     <main>
         <div id="lista-productos" class="lista-productos">
-            <div class="producto producto{{i}}" *ngFor="let producto of filtroProductos; index as i" (click)="elegirProducto(i)">
+            <div class="producto producto{{i}}" *ngFor="let producto of productos; index as i" (click)="elegirProducto(i)">
 
                 <img  src="{{producto.imagen}}" alt="imagen">
             
         
                 <div class="overview">
                     <h1>{{producto.nombre}}</h1>
+
+                    <fa-icon [icon]="clipboardList"></fa-icon>
+                    <p> {{producto.categoria}}</p>
         
                     <fa-icon [icon]="iconoDinero"></fa-icon>
                     <p> {{producto.precio}} DOP</p>
@@ -62,6 +80,7 @@
 
             <ul>
                 <li>Nombre: {{productoElegido.nombre}}</li>
+                <li>Categoría: {{productoElegido.categoria}}</li>
                 <li>Resumen: {{productoElegido.overview}}</li>
                 <li>Descripción: {{productoElegido.descripcion}}</li>
                 <li>Precio: {{productoElegido.precio}}</li>
