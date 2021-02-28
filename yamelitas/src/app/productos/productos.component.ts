@@ -58,6 +58,10 @@ export class ProductosComponent implements OnInit {
   filtroTexto: string = '';
   sugerenciasBuscador: Producto[] = [];
 
+  loader: boolean = true;
+  online: boolean = true;
+  vacio: boolean = false;
+
 
   constructor() {
 
@@ -69,6 +73,7 @@ export class ProductosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
 
     const BUSCADOR = document.getElementById('buscador');
     const CATEGORIA = document.getElementById('categoria-elegida');
@@ -144,38 +149,61 @@ export class ProductosComponent implements OnInit {
 
   cargarProductos(filtro: string, query: any, valor: any){
 
+    this.vacio = false;
     this.productos = [];
+    this.loader = true;
+    this.online = true;
     
     firebase.default.firestore().collection('productos').where(filtro, query, valor).get()
     .then((snapshot) => {
-      snapshot.forEach((doc) => {
-        let producto: Producto = {
-          nombre: doc.data().nombre,
-          categoria: doc.data().categoria,
-          overview: doc.data().overview,
-          imagen: doc.data().imagen,
-          precio: doc.data().precio,
-          descripcion: doc.data().descripcion,
-          comentarios: doc.data().comentarios
 
-        }  
-
-        this.productos.push(producto);
+      if(snapshot.empty){
+        this.vacio = true;
         
+      } else {
 
-      });
+        snapshot.forEach((doc) => {
 
-      this.productoElegido = this.productos[0];
+          let producto: Producto = {
+            nombre: doc.data().nombre,
+            categoria: doc.data().categoria,
+            overview: doc.data().overview,
+            imagen: doc.data().imagen,
+            precio: doc.data().precio,
+            descripcion: doc.data().descripcion,
+            comentarios: doc.data().comentarios
+  
+          }  
+  
+          
+          this.productos.push(producto);
+          
+          
+          
+        });
+
+      }
+      
+      if(snapshot.empty != true && snapshot.empty != false){
+        this.online = false;
+      }
+
+      
       this.leftMoves = Math.floor(this.productos.length / 2);
       this.rightMoves = Math.floor(this.productos.length / 2);
       
-      
+      this.loader = false;
 
-    })
-    .catch((err) => {
+    }).catch((err) => {
       console.log('Error getting documents', err);
+      this.online = false;
+      
     });
+
+
+
   }
+
 
   desplegarCategorias(){
     if(!this.slideDown){
@@ -230,34 +258,15 @@ export class ProductosComponent implements OnInit {
 
 
     this.productoElegido = this.productos[productoIndex];
+
+    window.scroll({
+      top: 1000,
+      behavior: 'smooth'
+    });
     
   }
 
 
-  swipeLeft(){
-    const contenedorProductosElement = document.getElementById('lista-productos');
-
-    
-    
-    if (contenedorProductosElement && this.leftMoves > 0 ){
-      const listaProductosElements = Array.from(contenedorProductosElement.querySelectorAll('div')); 
-      this.posicionHorizontalProductos += 295;
-
-      listaProductosElements.forEach(producto => {
-       producto.style.left = `${this.posicionHorizontalProductos}px`;
-        
-      });
-
-      this.leftMoves -= 1;
-      this.rightMoves += 1;
-
-      
-    }
-
-
-    
-    
-  }
 
 
   mostrarSugerencias(texto: string){
@@ -295,6 +304,9 @@ export class ProductosComponent implements OnInit {
 
     this.productoElegido = this.productos[0];
 
+    for(let moves=0; moves <= this.leftMoves; moves ++){
+      this.swipeLeft();
+    }
     
     
   }
@@ -312,6 +324,32 @@ export class ProductosComponent implements OnInit {
 
     }
   }
+
+  swipeLeft(){
+    const contenedorProductosElement = document.getElementById('lista-productos');
+
+    
+    
+    if (contenedorProductosElement && this.leftMoves > 0 ){
+      const listaProductosElements = Array.from(contenedorProductosElement.querySelectorAll('div')); 
+      this.posicionHorizontalProductos += 295;
+
+      listaProductosElements.forEach(producto => {
+       producto.style.left = `${this.posicionHorizontalProductos}px`;
+        
+      });
+
+      this.leftMoves -= 1;
+      this.rightMoves += 1;
+
+      
+    }
+
+
+    
+    
+  }
+
 
   swipeRight(){
     const contenedorProductosElement = document.getElementById('lista-productos');
@@ -337,7 +375,9 @@ export class ProductosComponent implements OnInit {
   
   }
 
-  
+  recargarPagina(){
+    window.location.reload();
+  }
 
 
 

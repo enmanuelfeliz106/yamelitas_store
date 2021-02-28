@@ -10,6 +10,7 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import { InicioComponent } from './inicio/inicio.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { FormsModule } from '@angular/forms';
+import { LoaderComponent } from './loader/loader.component';
 
 
 
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     ProductosComponent,
-    InicioComponent
+    InicioComponent,
+    LoaderComponent
     
     
 

@@ -33,6 +33,19 @@
     </nav>
 
     <main>
+
+        <app-loader *ngIf="loader"></app-loader>
+
+        <div id="mensaje-no-hay-productos-container" class="mensaje-no-hay-productos-container" *ngIf="vacio && !loader && online">
+            <p>Por ahora no hay productos disponibles con ese nombre o categoría.</p>
+        </div>
+
+        <div id="mensaje-problemas-conexion" class="mensaje-problemas-conexion" *ngIf="online === false">
+            <h1>Error al cargar</h1>
+            <p>Comprueba la conexión a Internet</p>
+            <button (click)="recargarPagina()">Refrescar</button>
+        </div>
+
         <div id="lista-productos" class="lista-productos">
             <div class="producto producto{{i}}" *ngFor="let producto of productos; index as i" (click)="elegirProducto(i)">
 
@@ -58,6 +71,7 @@
             </div>
 
         </div>
+        
         
 
         <div class="swipe-left" id="swipe-left" (click)="swipeLeft()">
