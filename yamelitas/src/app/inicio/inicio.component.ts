@@ -45,6 +45,8 @@ export class InicioComponent implements OnInit {
 
   publicaciones: Array<any> = [];
 
+  loader: boolean = true;
+
   constructor() {}
 
   ngOnInit(){
@@ -57,41 +59,50 @@ export class InicioComponent implements OnInit {
 
   cargarPublicaciones(filtro: string){
 
+    this.loader = true;
+
+    $('#barra_lateral nav ul li').hide();
+
     this.publicaciones = []
 
-    if(filtro == 'todas'){
-        firebase.default.firestore().collection('publicaciones').get()
-      .then((snapshot) => {
-        snapshot.forEach((doc) => {
-          this.publicaciones.push(doc.data());
-          
+    setTimeout( () => {
+      $('#barra_lateral nav ul li').show(500);
+    }, 500);
 
-        });
+    if(filtro === 'todas'){
+      firebase.default.firestore().collection('publicaciones').get()
+      .then((snapshot) => {
+          snapshot.forEach((doc) => {
+            this.publicaciones.push(doc.data());
+            
+
+          });
+
+          this.publicaciones.reverse();
+          this.loader = false;
       })
       .catch((err) => {
         console.log('Error getting documents', err);
       });
 
     } else {
-        firebase.default.firestore().collection('publicaciones').get()
+      firebase.default.firestore().collection('publicaciones').where('hashtags', 'array-contains', filtro).get()
       .then((snapshot) => {
-        snapshot.forEach((doc) => {
-          let publicacion = doc.data();
+          snapshot.forEach((doc) => {
+            this.publicaciones.push(doc.data());
+            
 
-          if(publicacion.hashtags.includes(filtro)){
-            this.publicaciones.push(publicacion);
-          }
-          
-          
-          
-        });
+          });
+
+          this.publicaciones.reverse();
+          this.loader = false;
       })
       .catch((err) => {
         console.log('Error getting documents', err);
       });
+    }
 
-    } 
-
+    
 
   }
 
@@ -110,6 +121,10 @@ export class InicioComponent implements OnInit {
         this.slide = 'assets/iconos/slide-down-icon.svg';
         $('footer').css('border-top', 'none')
     }
+  }
+
+  recargarPagina(){
+    window.location.reload();
   }
 
 

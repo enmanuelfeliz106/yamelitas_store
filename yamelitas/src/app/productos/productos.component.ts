@@ -59,15 +59,12 @@ export class ProductosComponent implements OnInit {
   sugerenciasBuscador: Producto[] = [];
 
   loader: boolean = true;
-  online: boolean = true;
-  vacio: boolean = false;
+
 
 
   constructor() {
 
-    this.cargarProductos('categoria', 'in', this.categorias);
-
-    
+    this.cargarProductos('categoria', 'in', this.allCategories);
     
     
   }
@@ -85,19 +82,6 @@ export class ProductosComponent implements OnInit {
 
     }
     
-    
-
-    addEventListener('keydown', e => {
-      if(e.key === 'ArrowRight'){
-        this.swipeRight();
-      }
-    });
-
-    addEventListener('keydown', e => {
-      if(e.key === 'ArrowLeft'){
-        this.swipeLeft();
-      }
-    });
 
     //Funcion slide down/slide up para las categorias
 
@@ -149,18 +133,12 @@ export class ProductosComponent implements OnInit {
 
   cargarProductos(filtro: string, query: any, valor: any){
 
-    this.vacio = false;
     this.productos = [];
     this.loader = true;
-    this.online = true;
+
     
     firebase.default.firestore().collection('productos').where(filtro, query, valor).get()
     .then((snapshot) => {
-
-      if(snapshot.empty){
-        this.vacio = true;
-        
-      } else {
 
         snapshot.forEach((doc) => {
 
@@ -182,27 +160,23 @@ export class ProductosComponent implements OnInit {
           
         });
 
-      }
-      
-      if(snapshot.empty != true && snapshot.empty != false){
-        this.online = false;
-      }
-
       
       this.leftMoves = Math.floor(this.productos.length / 2);
       this.rightMoves = Math.floor(this.productos.length / 2);
       
       this.loader = false;
 
+
     }).catch((err) => {
       console.log('Error getting documents', err);
-      this.online = false;
+      
       
     });
 
 
-
   }
+
+  
 
 
   desplegarCategorias(){
@@ -221,7 +195,7 @@ export class ProductosComponent implements OnInit {
     } else {
 
 
-      $('#categorias-container .categorias').stop().slideUp( 300, function() {
+      $('#categorias-container .categorias').stop().slideUp( 100, function() {
 
         
 
@@ -251,6 +225,7 @@ export class ProductosComponent implements OnInit {
 
 
   elegirProducto(productoIndex: number){
+
 
     $('.producto').removeClass('producto-elegido');
 
@@ -369,9 +344,7 @@ export class ProductosComponent implements OnInit {
 
       
     }
-
     
-
   
   }
 

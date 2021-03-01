@@ -1,7 +1,7 @@
 
 <div class="container">
     
-    <aside class="barra_lateral" >
+    <aside class="barra_lateral" id="barra_lateral">
         <header>
             <h1>Categorías</h1>
         </header>
@@ -15,25 +15,25 @@
                     Todas
                 </li>
 
-                <li (click)="cargarPublicaciones('#salud')">
+                <li (click)="cargarPublicaciones('salud')">
                     <img src="assets/iconos/leaf-outline.svg" alt="imagen de hojita inclinada a la izquierda">
                     <img src="assets/iconos/leaf-outline-shadow.svg" alt="sombra de la hojita" class="sombra">
                     Salud
                 </li>
 
-                <li (click)="cargarPublicaciones('#cuidadodelcabello')">
+                <li (click)="cargarPublicaciones('cuidadodelcabello')">
                     <img src="assets/iconos/leaf-outline.svg" alt="imagen de hojita inclinada a la izquierda">
                     <img src="assets/iconos/leaf-outline-shadow.svg" alt="sombra de la hojita" class="sombra">
                     Cuidado del <br> cabello
                 </li>
 
-                <li (click)="cargarPublicaciones('#cuidadodelapiel')">
+                <li (click)="cargarPublicaciones('cuidadodelapiel')">
                     <img src="assets/iconos/leaf-outline.svg" alt="imagen de hojita inclinada a la izquierda">
                     <img src="assets/iconos/leaf-outline-shadow.svg" alt="sombra de la hojita" class="sombra">
                     Cuidado de <br> la piel
                 </li>
 
-                <li (click)="cargarPublicaciones('#tipsdetemporada')">
+                <li (click)="cargarPublicaciones('tipsdetemporada')">
                     <img src="assets/iconos/leaf-outline.svg" alt="imagen de hojita inclinada a la izquierda">
                     <img src="assets/iconos/leaf-outline-shadow.svg" alt="sombra de la hojita" class="sombra">
                     Tips de <br> temporada
@@ -45,6 +45,15 @@
     </aside>
 
     <main>
+
+        <app-loader *ngIf="loader"></app-loader>
+
+        <div id="mensaje-problemas-conexion" class="mensaje-problemas-conexion" *ngIf="publicaciones.length === 0 && loader === false">
+            <h1>Error al cargar</h1>
+            <p>Comprueba la conexión a Internet</p>
+            <button (click)="recargarPagina()">Refrescar</button>
+        </div>
+
 
 
         <article *ngFor="let publicacion of publicaciones">
@@ -65,7 +74,7 @@
                     </p>
                     
                     <p class="hashtags">
-                        <span *ngFor="let hashtag of publicacion.hashtags">{{hashtag}}</span>
+                        <span *ngFor="let hashtag of publicacion.hashtags">#{{hashtag}}</span>
                     </p>
                     
                 </div>
