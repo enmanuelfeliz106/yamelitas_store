@@ -1,0 +1,15 @@
+
+.acerca-de-yamelitas-container{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    img{
+        width: 70%;
+        margin-bottom: .8rem;
+        border: 2px solid var(--yamelitas-morado-9);
+        border-radius: .5rem;
+    }
+}

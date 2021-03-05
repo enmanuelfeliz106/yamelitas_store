@@ -11,6 +11,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { FormsModule } from '@angular/forms';
 import { LoaderComponent } from './loader/loader.component';
+import { AcercaDeYamelitasComponent } from './acerca-de-yamelitas/acerca-de-yamelitas.component';
 
 
 
@@ -19,7 +20,8 @@ import { LoaderComponent } from './loader/loader.component';
     AppComponent,
     ProductosComponent,
     InicioComponent,
-    LoaderComponent
+    LoaderComponent,
+    AcercaDeYamelitasComponent
     
     
 
