@@ -1,124 +1,24 @@
 
-
-.cabecera{
+.barra-navegacion{
     display: grid;
-    grid-template-rows: 1;
-    grid-template-columns: 20% 60% 20%;
-    position: relative;
+    grid-template: 1fr / 2fr 6fr 2fr;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 2000;
+    backdrop-filter: black;
+    background-color: white;
+    background-image: linear-gradient(to top, var(--yamelitas-morado-7), var(--yamelitas-morado-5));
+    border-bottom-right-radius: .5rem;
+    border-bottom-left-radius: .5rem;
 
 
-    .user{
+    .redes-sociales{
 
-        width: 20%;
-        margin-top: 50px;
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
-        background-image: linear-gradient(to bottom,var(--yamelitas-morado-7), var(--yamelitas-morado-1));
-        text-align: center;
-        justify-self: end;
-        position: fixed;
-        z-index: 1100;
-        right: -15%;
-        transition: right .7s;
-        backdrop-filter: blur(10px);
-      
-
-        .imagen_de_perfil{
-            
-            width: 8vmin;
-            margin-top: 1vh;
-        }
-
-        nav{
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 5px;
-            border-top: 1px solid rgb(236, 236, 236);
-    
-        }
-
-        
-
-        a{  
-            width: 100%;
-            text-decoration: none;
-            color: black;
-            display: flex;
-            justify-content: flex-start;
-            align-content: center;
-            padding: .5rem;
-            border-radius: 10px;
-            transition: background-color .5s, color .2s, border-radius 0s;
-            padding: .2em;
-            margin: .4rem 0;
-            
-            
-            
-        }
-
-        img{
-            width: 1em;
-            margin: 0 2rem;
-
-        }
-
-
-
-        a:hover{
-            background-color: var(--yamelitas-morado-10);
-            color: white;
-
-            img{
-                background-color: white;
-                border-radius: 10px;
-            }
-        }
-
-        
-    }
-
-    .user:hover{
-        right: 0;
-
-        .imagen_de_perfil{
-            
-            width: 8vmin;
-            margin-top: 1vh;
-        }
-
-        a{
-            justify-content: center;
-        }
-
-        img{
-            width: 1em;
-            margin: 0 .4em;
-
-        }
-    }
-
-    .logo_yamelitas{
-        justify-self: center;
-        width: 80vmin;    
-        
-
-    }
-
-    .redes_sociales{
-
-        position: fixed;
-        left: 0;
-        top: 3vh;
-
-        margin-left: auto;
-        margin-top: 50px;
-        width: fit-content;
-        border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px;
-
-        background-image: linear-gradient(to bottom,var(--yamelitas-morado-5), var(--yamelitas-morado-1));
+        display: flex;
 
 
        
@@ -126,8 +26,7 @@
         img{
             width: 30px;
             margin: 10px 15px;
-            cursor: pointer;
-            
+            cursor: pointer;  
             
         }
 
@@ -136,6 +35,173 @@
         }
 
     }
+
+    .test{
+        justify-self: start;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: rgba(0, 0, 0, .8);
+
+        p{
+            font-size: 1.2rem;
+            color: aliceblue;
+        }
+
+        .buscador{
+            width: 70%;
+            margin-left: 1.5rem;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            border-radius: .25rem;
+
+            .sugerencias-buscador{
+                width: 100%;
+                max-height: 200px;
+                overflow-y: scroll;
+                position: absolute;
+                top: 100%;
+                z-index: 1000;
+                background-color: white;
+
+                ul{
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    background-color: transparent;
+                }
+
+                li{
+                    display: flex;
+                    justify-content: center;
+                    width: 100%;
+                    padding: 1rem;
+                    background-color: white;
+                    border: 1px solid grey;
+                    border-radius: .25rem;
+                }
+
+                li:hover{
+                    color: var(--yamelitas-morado-9);
+                    cursor: pointer;
+                    
+                }
+            }
+
+            input{
+                width: 100%;
+                padding: .25rem 1rem;
+                font-size: inherit;
+                border-radius: .25rem;
+            }
+
+    
+    
+            fa-icon{
+                padding: .25rem;
+                padding: .25rem 1rem;
+                font-size: inherit;
+                cursor: pointer;
+                align-self: center;
+                color: white;
+            }
+            
+        }
+    }
+
+    .user{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+      
+
+        .imagen_de_perfil{
+            margin: 0 1rem;
+            width: 35px;
+            border-radius: 50%;
+        }
+
+        .imagen_de_perfil:hover{
+            cursor: pointer;
+        }
+
+        nav{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+    
+        }
+
+        
+
+        a{  
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color .5s, color .2s, border-radius 0s;
+            padding: .2em;
+            border-radius: 50%;
+
+            fa-icon{
+                color: white;
+                width: 20px;
+                margin: 0 1rem;
+            }
+
+            
+            
+            
+        }
+
+
+
+        a:hover{
+            color: white;
+            background-color: white;
+
+            fa-icon{
+                color: var(--yamelitas-morado-7);
+            }
+            
+
+        }
+
+        
+    }
+
+    
+
+}
+
+
+
+.cabecera{
+    display: grid;
+    grid-template-rows: 1;
+    grid-template-columns: 20% 60% 20%;
+    position: relative;
+    margin-top: 3.5rem;
+
+
+
+    
+
+    .logo_yamelitas{
+        justify-self: center;
+        width: 80vmin;    
+        
+
+    }
+
+    
 
     
     

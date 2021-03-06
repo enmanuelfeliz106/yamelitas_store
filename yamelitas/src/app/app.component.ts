@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import { environment } from 'src/environments/environment';
 import * as $ from 'jquery';
+import * as fa from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,9 @@ import * as $ from 'jquery';
 })
 export class AppComponent implements OnInit{
   title = 'yamelitas';
-
+  searchIcon = fa.faSearch;
+  shoppingCartIcon = fa.faShoppingCart;
+  wrenchIcon = fa.faWrench;
   
   inicio = firebase.default.initializeApp(environment.firebaseConfig);
 
